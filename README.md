@@ -14,6 +14,7 @@ I am building an interactive puzzle game for Android. The app is being developed
 ## Technologies Used
 - Java
 - Android SDK
+- Android API
 - XML (for UI layouts)
 - Android Jetpack Components
 
@@ -22,6 +23,14 @@ I am building an interactive puzzle game for Android. The app is being developed
 - [ ] Core game mechanics (In Progress)
 - [ ] Animations (Planned)
 
+## Screenshots
+
+![Home page screenshot](Screenshots/GalaxyS23Ultra_home.jpg)
+
+![Home page landscape screenshot](Screenshots/GalaxyS23Ultra_home_land.jpg)
+
+![Puzzle page screenshot](Screenshots/GalaxyS23Ultra_puzzle.jpg)
+
 ## How to Run
 1. Clone the repository:
    ```sh
@@ -29,8 +38,6 @@ I am building an interactive puzzle game for Android. The app is being developed
    ```
 2. Open the project in Android Studio.
 3. Build and run the app on an emulator or physical device.
-
-## Screenshots
 
 ---
 Stay tuned for updates!
