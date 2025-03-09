@@ -25,11 +25,11 @@ I am building an interactive puzzle game for Android. The app is being developed
 
 ## Screenshots
 
-![Home page screenshot](Screenshots/GalaxyS23Ultra_home.jpg)
+<img src="Screenshots/GalaxyS23Ultra_home.jpg" alt="Home page screenshot" width="400">
 
 ![Home page landscape screenshot](Screenshots/GalaxyS23Ultra_home_land.jpg)
 
-![Puzzle page screenshot](Screenshots/GalaxyS23Ultra_puzzle.jpg)
+<img src="Screenshots/GalaxyS23Ultra_puzzle.jpg" alt="Puzzle page screenshot" width="400">
 
 ## How to Run
 1. Clone the repository:
