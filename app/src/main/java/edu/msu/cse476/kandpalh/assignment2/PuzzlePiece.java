@@ -5,6 +5,8 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 
+import java.util.Random;
+
 public class PuzzlePiece {
     /**
      * The image for the actual piece.
@@ -33,15 +35,22 @@ public class PuzzlePiece {
      */
     private float finalY;
 
+    /**
+     * The puzzle piece ID
+     */
+    private int id;
+
+    /**
+     * We consider a piece to be in the right location if within
+     * this distance.
+     */
+    final static float SNAP_DISTANCE = 0.05f;
+
     public PuzzlePiece(Context context, int id, float finalX, float finalY) {
         this.finalX = finalX;
         this.finalY = finalY;
+        this.id = id;
         piece = BitmapFactory.decodeResource(context.getResources(), id);
-
-        // Temporarily change the x and y coordinates for this assignment,
-        // to get the piece to the right location
-        x = finalX;
-        y = finalY;
     }
 
     /**
@@ -69,4 +78,89 @@ public class PuzzlePiece {
         canvas.restore();
     }
 
+    /**
+     * Test to see if we have touched a puzzle piece
+     * @param testX X location as a normalized coordinate (0 to 1)
+     * @param testY Y location as a normalized coordinate (0 to 1)
+     * @param puzzleSize the size of the puzzle in pixels
+     * @param scaleFactor the amount to scale a piece by
+     * @return true if we hit the piece
+     */
+    public boolean hit(float testX, float testY,
+                       int puzzleSize, float scaleFactor) {
+        // Make relative to the location and size to the piece size
+        int pX = (int)((testX - x) * puzzleSize / scaleFactor) +
+                piece.getWidth() / 2;
+        int pY = (int)((testY - y) * puzzleSize / scaleFactor) +
+                piece.getHeight() / 2;
+        if(pX < 0 || pX >= piece.getWidth() ||
+                pY < 0 || pY >= piece.getHeight()) {
+            return false;
+        }
+        // We are within the rectangle of the piece.
+        // Are we touching actual picture?
+        return (piece.getPixel(pX, pY) & 0xff000000) != 0;
+    }
+
+    /**
+     * Move the puzzle piece by dx, dy
+     * @param dx x amount to move
+     * @param dy y amount to move
+     */
+    public void move(float dx, float dy) {
+        x += dx;
+        y += dy;
+    }
+
+    /**
+     * If we are within SNAP_DISTANCE of the correct
+     * answer, snap to the correct answer exactly.
+     * @return true if piece snaps into place
+     */
+    public boolean maybeSnap() {
+        if(Math.abs(x - finalX) < SNAP_DISTANCE &&
+                Math.abs(y - finalY) < SNAP_DISTANCE) {
+            x = finalX;
+            y = finalY;
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Determine if this piece is snapped in place
+     * @return true if snapped into place
+     */
+    public boolean isSnapped() {
+        return (x == finalX && y == finalY);
+    }
+
+    /**
+     * Shuffle the location of this piece
+     * @param rand A random number generator
+     */
+    public void shuffle(Random rand) {
+        x = rand.nextFloat();
+        y = rand.nextFloat();
+    }
+
+    public float getX() {
+        return x;
+    }
+
+    public void setX(float x) {
+        this.x = x;
+    }
+
+    public float getY() {
+        return y;
+    }
+
+    public void setY(float y) {
+        this.y = y;
+    }
+
+    public int getId() {
+        return id;
+    }
 }
