@@ -5,7 +5,7 @@ An interactive puzzle game for Android, built with Java and the Android SDK.
 ## Project Overview
 Puzzle App is a mobile puzzle game developed for Android devices. The app challenges users with engaging puzzles, wrapped in a clean, interactive UI. Designed with performance and responsiveness in mind, it ensures a smooth experience across various screen sizes and orientations.
 
-## Features (Planned & Implemented)
+## Features
 - **Puzzle Mechanics** – Fully functional core logic for solving tile-based puzzles.
 - **User Interface** – Intuitive and responsive UI for a seamless experience.
 - **Animations** – Smooth transitions and visual feedback to enhance gameplay.
